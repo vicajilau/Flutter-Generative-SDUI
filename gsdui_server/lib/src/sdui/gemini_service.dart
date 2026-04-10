@@ -104,7 +104,7 @@ Example output:
       }
       return '{}';
     } else {
-      throw Exception('Failed to generate from Gemini: \${response.body}');
+      throw Exception('Failed to generate from Gemini [Status: ${response.statusCode}]: ${response.body}');
     }
   }
 }
