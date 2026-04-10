@@ -15,11 +15,11 @@ jobs:
       SERVERPOD_PASSWORD_redis: 'PdNVuiSakCmlkkJ5WmYTq_vBOTILKnQ1'
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.32.8'
+          channel: 'stable'
 
       - name: Start containers
         working-directory: gsdui_server
@@ -27,7 +27,7 @@ jobs:
 
       - name: Install dependencies
         working-directory: gsdui_server
-        run: dart pub get
+        run: flutter pub get
 
       - name: Install Serverpod CLI
         working-directory: gsdui_server
