@@ -7,7 +7,7 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_DB: gsdui
-      POSTGRES_PASSWORD: "3SZREnQ_us3VYgVRgPpEptAUg8c9FPg6"
+      POSTGRES_PASSWORD: "${SERVERPOD_PASSWORD_database}"
     volumes:
       - gsdui_data:/var/lib/postgresql/data
 
@@ -15,7 +15,7 @@ services:
     image: redis:6.2.6
     ports:
       - "8091:6379"
-    command: redis-server --requirepass "3VPybD7_tUADylXoLZKDm8KNRGIPRnl4"
+    command: redis-server --requirepass "${SERVERPOD_PASSWORD_redis}"
     environment:
       - REDIS_REPLICATION_MODE=master
 
@@ -27,7 +27,7 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_DB: gsdui_test
-      POSTGRES_PASSWORD: "HsptsR9BkkW-yupjt_O-33BinWCtSwgt"
+      POSTGRES_PASSWORD: "${SERVERPOD_PASSWORD_database}"
     volumes:
       - gsdui_test_data:/var/lib/postgresql/data
 
@@ -35,7 +35,7 @@ services:
     image: redis:6.2.6
     ports:
       - "9091:6379"
-    command: redis-server --requirepass "PdNVuiSakCmlkkJ5WmYTq_vBOTILKnQ1"
+    command: redis-server --requirepass "${SERVERPOD_PASSWORD_redis}"
     environment:
       - REDIS_REPLICATION_MODE=master
 
