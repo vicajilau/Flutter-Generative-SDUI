@@ -10,7 +10,6 @@ jobs:
   test:
     runs-on: ubuntu-latest
     env:
-      VERSION: '3.4.5'
       SERVERPOD_PASSWORD_database: 'HsptsR9BkkW-yupjt_O-33BinWCtSwgt'
       SERVERPOD_PASSWORD_redis: 'PdNVuiSakCmlkkJ5WmYTq_vBOTILKnQ1'
 
@@ -30,8 +29,7 @@ jobs:
         run: flutter pub get
 
       - name: Install Serverpod CLI
-        working-directory: gsdui_server
-        run: dart pub global activate serverpod_cli $VERSION
+        run: dart pub global activate serverpod_cli
 
       - name: Run Serverpod generator
         working-directory: gsdui_server
