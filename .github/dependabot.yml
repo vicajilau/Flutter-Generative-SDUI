@@ -1,11 +1,37 @@
-# To get started with Dependabot version updates, you'll need to specify which
-# package ecosystems to update and where the package manifests are located.
-# Please see the documentation for all configuration options:
-# https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
-
 version: 2
 updates:
+  # Maintain GitHub Actions up to date
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+
+  # Monitor the main Workspace root
   - package-ecosystem: "pub"
-    directory: "./gsdui_client/"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+
+  # Monitor Serverpod Backend
+  - package-ecosystem: "pub"
+    directory: "/gsdui_server/"
+    schedule:
+      interval: "weekly"
+
+  # Monitor Client Library
+  - package-ecosystem: "pub"
+    directory: "/gsdui_client/"
+    schedule:
+      interval: "weekly"
+
+  # Monitor Flutter Frontend
+  - package-ecosystem: "pub"
+    directory: "/gsdui_flutter/"
+    schedule:
+      interval: "weekly"
+
+  # Monitor Docker images in the backend
+  - package-ecosystem: "docker"
+    directory: "/gsdui_server/"
     schedule:
       interval: "weekly"
