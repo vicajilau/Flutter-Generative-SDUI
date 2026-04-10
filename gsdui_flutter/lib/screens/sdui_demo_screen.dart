@@ -1,10 +1,15 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import '../../main.dart';
+import 'package:gsdui_client/gsdui_client.dart';
 import '../sdui/sdui_engine.dart';
 
 class SduiDemoScreen extends StatefulWidget {
-  const SduiDemoScreen({super.key});
+  final Client client;
+
+  const SduiDemoScreen({
+    required this.client,
+    super.key,
+  });
 
   @override
   State<SduiDemoScreen> createState() => _SduiDemoScreenState();
@@ -28,7 +33,7 @@ class _SduiDemoScreenState extends State<SduiDemoScreen> {
     });
 
     try {
-      final response = await client.sdui.generateUi(prompt);
+      final response = await widget.client.sdui.generateUi(prompt);
 
       try {
         final decodedMap = jsonDecode(response.jsonSchema);
