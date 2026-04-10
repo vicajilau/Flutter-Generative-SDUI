@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import '../../main.dart'; // To access the global 'client' object
+import '../../main.dart';
 import '../sdui/sdui_engine.dart';
 
 class SduiDemoScreen extends StatefulWidget {
@@ -29,7 +29,7 @@ class _SduiDemoScreenState extends State<SduiDemoScreen> {
 
     try {
       final response = await client.sdui.generateUi(prompt);
-      
+
       try {
         final decodedMap = jsonDecode(response.jsonSchema);
         setState(() {
@@ -38,7 +38,8 @@ class _SduiDemoScreenState extends State<SduiDemoScreen> {
         });
       } catch (e) {
         setState(() {
-          _errorMessage = 'Failed to parse JSON: $e\n\nRaw response:\n${response.jsonSchema}';
+          _errorMessage =
+              'Failed to parse JSON: $e\n\nRaw response:\n${response.jsonSchema}';
         });
       }
     } catch (e) {
@@ -72,7 +73,7 @@ class _SduiDemoScreenState extends State<SduiDemoScreen> {
                 _showRawJson = !_showRawJson;
               });
             },
-          )
+          ),
         ],
       ),
       body: Column(
@@ -86,7 +87,8 @@ class _SduiDemoScreenState extends State<SduiDemoScreen> {
                   child: TextField(
                     controller: _promptController,
                     decoration: const InputDecoration(
-                      hintText: 'e.g., "A blue button and a red text saying hello"',
+                      hintText:
+                          'e.g., "A blue button and a red text saying hello"',
                       border: OutlineInputBorder(),
                     ),
                     onSubmitted: (_) => _generateUi(),
@@ -118,37 +120,37 @@ class _SduiDemoScreenState extends State<SduiDemoScreen> {
                     ),
                   )
                 : _isLoading
-                    ? const Center(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            CircularProgressIndicator(),
-                            SizedBox(height: 16),
-                            Text('Thinking... (This can take a few seconds)'),
-                          ],
-                        ),
-                      )
-                    : _generatedSchema == null
-                        ? const Center(
-                            child: Text('Type a prompt to generate a UI!'),
-                          )
-                        : _showRawJson
-                            ? SingleChildScrollView(
-                                padding: const EdgeInsets.all(16),
-                                child: Text(_rawJson ?? ''),
-                              )
-                            : Center(
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.grey.shade300),
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  margin: const EdgeInsets.all(16),
-                                  child: SingleChildScrollView(
-                                    child: SduiEngine.buildWidget(_generatedSchema),
-                                  ),
-                                ),
-                              ),
+                ? const Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        CircularProgressIndicator(),
+                        SizedBox(height: 16),
+                        Text('Thinking... (This can take a few seconds)'),
+                      ],
+                    ),
+                  )
+                : _generatedSchema == null
+                ? const Center(
+                    child: Text('Type a prompt to generate a UI!'),
+                  )
+                : _showRawJson
+                ? SingleChildScrollView(
+                    padding: const EdgeInsets.all(16),
+                    child: Text(_rawJson ?? ''),
+                  )
+                : Center(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey.shade300),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      margin: const EdgeInsets.all(16),
+                      child: SingleChildScrollView(
+                        child: SduiEngine.buildWidget(_generatedSchema),
+                      ),
+                    ),
+                  ),
           ),
         ],
       ),

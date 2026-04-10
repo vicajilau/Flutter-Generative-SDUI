@@ -75,18 +75,18 @@ Example output:
       'contents': [
         {
           'parts': [
-            {'text': prompt}
-          ]
-        }
+            {'text': prompt},
+          ],
+        },
       ],
       'systemInstruction': {
         'parts': [
-          {'text': systemInstruction}
-        ]
+          {'text': systemInstruction},
+        ],
       },
       'generationConfig': {
         'responseMimeType': 'application/json',
-      }
+      },
     });
 
     final response = await http.post(

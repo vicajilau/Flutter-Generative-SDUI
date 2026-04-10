@@ -8,7 +8,10 @@ class SduiEngine {
 
     final type = schema['type'] as String?;
     if (type == null) {
-      return const Text('Error: Widget type is missing.', style: TextStyle(color: Colors.red));
+      return const Text(
+        'Error: Widget type is missing.',
+        style: TextStyle(color: Colors.red),
+      );
     }
 
     switch (type) {
@@ -25,7 +28,10 @@ class SduiEngine {
       case 'ElevatedButton':
         return _buildElevatedButton(schema);
       default:
-        return Text('Unsupported widget type: $type', style: const TextStyle(color: Colors.red));
+        return Text(
+          'Unsupported widget type: $type',
+          style: const TextStyle(color: Colors.red),
+        );
     }
   }
 
@@ -34,7 +40,7 @@ class SduiEngine {
     if (schema['color'] != null) {
       bgColor = _parseColor(schema['color']);
     }
-    
+
     double padding = 0;
     if (schema['padding'] != null) {
       padding = (schema['padding'] as num).toDouble();
@@ -49,28 +55,49 @@ class SduiEngine {
     );
   }
 
-  static Widget _buildFlex(Map<String, dynamic> schema, {required bool isColumn}) {
+  static Widget _buildFlex(
+    Map<String, dynamic> schema, {
+    required bool isColumn,
+  }) {
     final mainAxisAlignmentStr = schema['mainAxisAlignment'] as String?;
     final crossAxisAlignmentStr = schema['crossAxisAlignment'] as String?;
-    
+
     MainAxisAlignment mainAxisAlignment = MainAxisAlignment.start;
     switch (mainAxisAlignmentStr) {
-      case 'center': mainAxisAlignment = MainAxisAlignment.center; break;
-      case 'end': mainAxisAlignment = MainAxisAlignment.end; break;
-      case 'spaceBetween': mainAxisAlignment = MainAxisAlignment.spaceBetween; break;
-      case 'spaceAround': mainAxisAlignment = MainAxisAlignment.spaceAround; break;
-      case 'spaceEvenly': mainAxisAlignment = MainAxisAlignment.spaceEvenly; break;
+      case 'center':
+        mainAxisAlignment = MainAxisAlignment.center;
+        break;
+      case 'end':
+        mainAxisAlignment = MainAxisAlignment.end;
+        break;
+      case 'spaceBetween':
+        mainAxisAlignment = MainAxisAlignment.spaceBetween;
+        break;
+      case 'spaceAround':
+        mainAxisAlignment = MainAxisAlignment.spaceAround;
+        break;
+      case 'spaceEvenly':
+        mainAxisAlignment = MainAxisAlignment.spaceEvenly;
+        break;
     }
 
     CrossAxisAlignment crossAxisAlignment = CrossAxisAlignment.center;
     switch (crossAxisAlignmentStr) {
-      case 'start': crossAxisAlignment = CrossAxisAlignment.start; break;
-      case 'end': crossAxisAlignment = CrossAxisAlignment.end; break;
-      case 'stretch': crossAxisAlignment = CrossAxisAlignment.stretch; break;
+      case 'start':
+        crossAxisAlignment = CrossAxisAlignment.start;
+        break;
+      case 'end':
+        crossAxisAlignment = CrossAxisAlignment.end;
+        break;
+      case 'stretch':
+        crossAxisAlignment = CrossAxisAlignment.stretch;
+        break;
     }
 
     final childrenData = schema['children'] as List<dynamic>? ?? [];
-    final children = childrenData.map((e) => buildWidget(e as Map<String, dynamic>?)).toList();
+    final children = childrenData
+        .map((e) => buildWidget(e as Map<String, dynamic>?))
+        .toList();
 
     if (isColumn) {
       return Column(
@@ -123,15 +150,33 @@ class SduiEngine {
     // A very basic map of icons. In a real app we'd map many more.
     IconData iconData = Icons.error;
     switch (iconName) {
-      case 'home': iconData = Icons.home; break;
-      case 'person': iconData = Icons.person; break;
-      case 'settings': iconData = Icons.settings; break;
-      case 'star': iconData = Icons.star; break;
-      case 'search': iconData = Icons.search; break;
-      case 'check': iconData = Icons.check; break;
-      case 'close': iconData = Icons.close; break;
-      case 'favorite': iconData = Icons.favorite; break;
-      case 'info': iconData = Icons.info; break;
+      case 'home':
+        iconData = Icons.home;
+        break;
+      case 'person':
+        iconData = Icons.person;
+        break;
+      case 'settings':
+        iconData = Icons.settings;
+        break;
+      case 'star':
+        iconData = Icons.star;
+        break;
+      case 'search':
+        iconData = Icons.search;
+        break;
+      case 'check':
+        iconData = Icons.check;
+        break;
+      case 'close':
+        iconData = Icons.close;
+        break;
+      case 'favorite':
+        iconData = Icons.favorite;
+        break;
+      case 'info':
+        iconData = Icons.info;
+        break;
     }
 
     return Icon(iconData, size: size, color: color);
@@ -139,7 +184,7 @@ class SduiEngine {
 
   static Widget _buildElevatedButton(Map<String, dynamic> schema) {
     final text = schema['text'] as String? ?? 'Button';
-    
+
     return ElevatedButton(
       onPressed: () {
         debugPrint('Generated button pressed!');
