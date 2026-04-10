@@ -1,0 +1,38 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "gsdui_flutter",
+            "cwd": "${workspaceFolder}/gsdui_flutter",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main.dart"
+        },
+        {
+            "name": "gsdui_server",
+            "cwd": "${workspaceFolder}/gsdui_server",
+            "request": "launch",
+            "type": "dart",
+            "preLaunchTask": "docker_compose_up",
+            "program": "bin/main.dart",
+            "env": {
+                "SERVERPOD_PASSWORD_database": "3SZREnQ_us3VYgVRgPpEptAUg8c9FPg6"
+            },
+            "args": [
+                "--apply-migrations"
+            ]
+        }
+    ],
+    "compounds": [
+        {
+            "name": "gsdui (full stack)",
+            "configurations": [
+                "gsdui_server",
+                "gsdui_flutter"
+            ],
+            "presentation": {
+                "order": 1
+            }
+        }
+    ]
+}

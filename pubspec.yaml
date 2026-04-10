@@ -1,0 +1,11 @@
+name: _
+publish_to: none
+
+environment:
+  sdk: '^3.8.0'
+
+workspace:
+  - gsdui_client
+  - gsdui_server
+  - gsdui_flutter
+
