@@ -3,6 +3,9 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Serverpod](https://img.shields.io/badge/Backend-Serverpod-blue)](https://serverpod.dev)
 [![Flutter](https://img.shields.io/badge/Frontend-Flutter-02569B)](https://flutter.dev)
+[![Analyze](https://github.com/vicajilau/Flutter-Generative-SDUI/actions/workflows/analyze.yml/badge.svg)](https://github.com/vicajilau/Flutter-Generative-SDUI/actions/workflows/analyze.yml)
+[![Format](https://github.com/vicajilau/Flutter-Generative-SDUI/actions/workflows/format.yml/badge.svg)](https://github.com/vicajilau/Flutter-Generative-SDUI/actions/workflows/format.yml)
+[![Tests](https://github.com/vicajilau/Flutter-Generative-SDUI/actions/workflows/tests.yml/badge.svg)](https://github.com/vicajilau/Flutter-Generative-SDUI/actions/workflows/tests.yml)
 
 A powerful template for building **Server-Driven UI (SDUI)** systems powered by **Generative AI**, built entirely with **Dart** using **Flutter** and **Serverpod**.
 
