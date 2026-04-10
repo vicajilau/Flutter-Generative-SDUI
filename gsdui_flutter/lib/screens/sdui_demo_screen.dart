@@ -119,9 +119,12 @@ class _SduiDemoScreenState extends State<SduiDemoScreen> {
             child: _errorMessage != null
                 ? Padding(
                     padding: const EdgeInsets.all(16.0),
-                    child: Text(
+                    child: SelectableText(
                       _errorMessage!,
-                      style: const TextStyle(color: Colors.red),
+                      style: const TextStyle(
+                        color: Colors.red,
+                        fontFamily: 'monospace',
+                      ),
                     ),
                   )
                 : _isLoading
