@@ -10,8 +10,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
     env:
-      SERVERPOD_PASSWORD_database: 'HsptsR9BkkW-yupjt_O-33BinWCtSwgt'
-      SERVERPOD_PASSWORD_redis: 'PdNVuiSakCmlkkJ5WmYTq_vBOTILKnQ1'
+      SERVERPOD_PASSWORD_database: ${{ secrets.SERVERPOD_PASSWORD_DATABASE }}
+      SERVERPOD_PASSWORD_redis: ${{ secrets.SERVERPOD_PASSWORD_REDIS }}
 
     steps:
       - uses: actions/checkout@v5
